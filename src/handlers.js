@@ -98,6 +98,23 @@ const createReporting = (request, reply) => {
   });
 };
 
+const createReason = (request, reply) => {
+  const {id} = request.query;
+
+  return new Promise((resolve, reject) => {
+    const detail = request.payload;
+    reportingModel.createReason(id, detail, (error, results) => {
+      if (error) reject(error);
+      console.log(date + ' : Request POST Reason success code 201');
+      resolve({
+        status: 'Success',
+        code: 201,
+        data: results,
+      });
+    });
+  });
+};
+
 const updateEmployee = (request, reply) => {
   const {nip} = request.query;
   const update = request.payload;
@@ -187,6 +204,7 @@ export {
   getReporting,
   createEmployee,
   createReporting,
+  createReason,
   updateEmployee,
   updateReporting,
   deleteEmployee,

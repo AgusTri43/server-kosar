@@ -66,6 +66,26 @@ reportingModel.createReporting = (detail, callback) => {
   });
 };
 
+reportingModel.createReason = (id, detail, callback) => {
+  const query = `
+  INSERT INTO reporting (
+    reason
+    ) VALUES (
+        '${detail.reason}',
+        WHERE complaint_id = '${id}', 
+        '0'
+        );
+    `;
+
+  connection.query(query, (error, results) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
 reportingModel.updateReporting = (id, update, callback) => {
   const saveDate = date.split('/');
   const query = `

@@ -28,6 +28,11 @@ const routes = [
     handler: handler.createReporting,
   },
   {
+    path: '/c/rsn',
+    method: 'POST',
+    handler: handler.createReason,
+  },
+  {
     path: '/u/emp',
     method: 'PUT',
     handler: handler.updateEmployee,
